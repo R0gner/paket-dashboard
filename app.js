@@ -348,13 +348,13 @@
     }
 
     if (moving.length) {
-      html += '<section class="block grow"><h2 class="section-label">Unterwegs</h2><div class="cards">';
+      html += '<section class="block"><h2 class="section-label">Unterwegs</h2><div class="cards">';
       moving.forEach(function (p) { html += cardButton(p); });
       html += "</div></section>";
     }
 
     html += '<section class="block"><button class="bar" type="button" id="archiv-toggle" aria-expanded="' + (state.archivOpen ? "true" : "false") + '">';
-    html += "<strong>Archiv</strong><span>" + archiv.length + " zugestellt in 14 Tagen <span class=\"chev\">" + (state.archivOpen ? "\u2013" : "+") + "</span></span></button>";
+    html += "<strong>Archiv</strong><span>" + archiv.length + " zugestellt in 14 Tagen <span class=\"chev\">" + (state.archivOpen ? "–" : "+") + "</span></span></button>";
     if (state.archivOpen) {
       html += '<div class="archiv-list">';
       if (!archiv.length) html += '<p class="fine">Nichts Zugestelltes in den letzten 14 Tagen.</p>';

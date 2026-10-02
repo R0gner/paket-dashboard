@@ -25,3 +25,7 @@ Artikel, falls vorhanden. Etappen nur, wenn es welche gibt; eine Nummer nur, wen
 ## Ort
 
 Wo etwas ist, steht im letzten Ereignis, im Klartext. Zum Beispiel unterwegs, in einer Filiale mit Straße, beim Nachbarn, zugestellt. Keine Karte, keine Positionsbestimmung, keine Koordinaten. Der Ort wird nicht gemessen, er wird aus dem letzten Ereignis gelesen.
+
+## Maße
+
+Die Abschnitte stehen untereinander im normalen Seitenfluss. Karten behalten ihre Höhe; das Archiv drückt sie nicht zusammen. Die Archiv-Leiste, die Ausgangszeile und Schließen sind mindestens 48 Pixel hoch. Beschriftungen, Zeiten und Nebennummern sind auf dem beigen Grund dunkler gehalten, bleiben aber braun statt schwarz.

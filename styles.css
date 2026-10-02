@@ -4,14 +4,14 @@
   --paper-deep: #e7d8c4;
   --card: #fffaf3;
   --ink: #2b241c;
-  --muted: #74685c;
-  --faint: #94867a;
+  --muted: #564e46;
+  --faint: #5f564d;
   --line: #eadccb;
   --pickup: #9c3d2e;
   --pickup-soft: #f6e4dc;
   --road: #8a5a14;
   --road-soft: #f4e7d2;
-  --quiet: #6f675f;
+  --quiet: #5c534b;
   --shadow: 0 14px 34px rgba(78, 52, 28, 0.07);
   --serif: Georgia, "Iowan Old Style", Palatino, "Palatino Linotype", serif;
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -19,7 +19,7 @@
 
 * { box-sizing: border-box; }
 
-html, body { height: 100%; }
+html, body { min-height: 100%; }
 
 body {
   margin: 0;
@@ -42,11 +42,11 @@ button {
 }
 
 .kiosk {
-  height: 100%;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
-  padding: 22px 28px 16px;
-  gap: 12px;
+  padding: 22px 28px 28px;
+  gap: 14px;
 }
 
 .top {
@@ -97,19 +97,9 @@ h1 {
 .clock-day { margin-right: 8px; }
 
 .view {
-  flex: 1;
-  min-height: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-}
-
-.block { min-height: 0; }
-
-.block.grow {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  gap: 14px;
 }
 
 .section-label {
@@ -124,8 +114,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
-  flex: 1;
-  min-height: 0;
+  align-items: stretch;
 }
 
 .card, .pickup, .quiet-row {
@@ -154,7 +143,8 @@ h1 {
 .tone-quiet::before { background: #cfc3b4; }
 
 .card {
-  height: 100%;
+  height: auto;
+  min-height: min-content;
   padding: 16px 18px 16px 22px;
   display: flex;
   flex-direction: column;
@@ -272,7 +262,8 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 16px;
+  min-height: 48px;
+  padding: 14px 18px;
   background: transparent;
   box-shadow: none;
   border: 1px dashed #ddcfc0;
@@ -288,16 +279,17 @@ h1 {
   margin-top: 8px;
 }
 
-.archiv-list .card { height: auto; min-height: 0; }
+.archiv-list .card { height: auto; }
 
 .sheet-single { min-width: 0; }
 
 .quiet-row {
   position: relative;
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 14px;
-  padding: 10px 16px 10px 20px;
+  min-height: 48px;
+  padding: 14px 18px 14px 22px;
   background: rgba(255, 250, 243, 0.55);
   box-shadow: none;
   color: var(--quiet);
@@ -309,24 +301,24 @@ h1 {
 }
 
 .quiet-label {
-  margin: 0 0 6px;
+  margin: 0 0 8px;
   font-size: 0.72rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #b0a496;
+  color: var(--faint);
 }
 
 .sheet {
-  flex: 1;
-  min-height: 0;
+  align-self: start;
+  width: fit-content;
+  max-width: 100%;
   background: var(--card);
   border-radius: 26px;
   box-shadow: var(--shadow);
-  padding: 18px 22px 16px;
+  padding: 18px 22px 18px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  overflow: auto;
+  gap: 10px;
 }
 
 .sheet-top {
@@ -337,8 +329,12 @@ h1 {
 }
 
 .back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
   border-radius: 999px;
-  padding: 8px 14px;
+  padding: 12px 20px;
   background: var(--paper);
   color: var(--muted);
   font-size: 0.95rem;
@@ -346,18 +342,24 @@ h1 {
 
 .sheet-grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: 22px;
-  min-height: 0;
+  grid-template-columns: minmax(200px, max-content) minmax(280px, 36rem);
+  gap: 4px 28px;
+  align-items: start;
+  justify-content: start;
 }
 
 .sheet h3 {
-  margin: 0 0 8px;
+  margin: 0 0 6px;
   font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--faint);
   font-weight: 650;
+}
+
+.sheet-grid > div > div + div,
+.sheet-single > div + div {
+  margin-top: 12px;
 }
 
 .item-list, .event-list, .steps {
@@ -451,10 +453,7 @@ h1 {
 .sheet .where { font-size: clamp(2rem, 3vw, 2.6rem); }
 
 @media (max-width: 980px) {
-  body { overflow: auto; }
-  .kiosk { height: auto; min-height: 100%; }
   .cards, .sheet-grid, .pickup { grid-template-columns: 1fr; }
-  .card { height: auto; }
 }
 
 @media (prefers-reduced-motion: reduce) {
